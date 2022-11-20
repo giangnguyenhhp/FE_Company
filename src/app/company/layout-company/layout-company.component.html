@@ -1,0 +1,41 @@
+<div class="">
+  <div class="action-bar">
+    <button mat-icon-button (click)="OpenCreateCompanyDialog()">
+      <mat-icon>add</mat-icon>
+      Add Company
+    </button>
+  </div>
+  <table>
+    <tr>
+      <th>Stt</th>
+      <th>Company Name</th>
+      <th>Company Address</th>
+      <th>Company Description</th>
+      <th>Company Id</th>
+      <th>Department Of Company</th>
+      <th>Update Company</th>
+      <th>Delete Company</th>
+    </tr>
+    <tr *ngFor="let company of companies;index as i">
+      <td>{{i + 1}}</td>
+      <td>{{company.nameCompany}}</td>
+      <td>{{company.address}}</td>
+      <td>{{company.description}}</td>
+      <td>{{company.companyId}}</td>
+      <td>
+      </td>
+      <td>
+        <button mat-icon-button (click)="OpenUpdateCompanyDialog(company)">
+          <mat-icon>edit</mat-icon>
+          Edit
+        </button>
+      </td>
+      <td>
+        <button mat-icon-button (click)="DeleteCompany(company.companyId)">
+          <mat-icon>delete</mat-icon>
+          Delete
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>

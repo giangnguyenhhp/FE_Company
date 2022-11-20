@@ -1,0 +1,42 @@
+<div class="">
+  <div class="action-bar">
+    <button mat-icon-button (click)="OpenCreateEmployeeDialog()">
+      <mat-icon>add</mat-icon>
+      Add Employee
+    </button>
+  </div>
+  <table>
+    <tr>
+      <th>Stt</th>
+      <th>Employee Name</th>
+      <th>Employee Address</th>
+      <th>Employee Birth</th>
+      <th>Department Name</th>
+      <th>Company Name</th>
+      <th>Employee Id</th>
+      <th>Update Employee</th>
+      <th>Delete Employee</th>
+    </tr>
+    <tr *ngFor="let Employee of Employees;index as i">
+      <td>{{i + 1}}</td>
+      <td>{{Employee.name}}</td>
+      <td>{{Employee.address}}</td>
+      <td>{{Employee.birth}}</td>
+      <td>{{Employee.department.name}}</td>
+      <td>{{Employee.company.nameCompany}}</td>
+      <td>{{Employee.employeeId}}</td>
+      <td>
+        <button mat-icon-button (click)="OpenUpdateEmployeeDialog(Employee)">
+          <mat-icon>edit</mat-icon>
+          Edit
+        </button>
+      </td>
+      <td>
+        <button mat-icon-button (click)="DeleteEmployee(Employee.employeeId)">
+          <mat-icon>delete</mat-icon>
+          Delete
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>

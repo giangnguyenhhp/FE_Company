@@ -1,0 +1,35 @@
+<h2 mat-dialog-title>Add New Department</h2>
+<form [formGroup]="updateDepartmentFormGroup" (submit)="submit()">
+
+  <mat-dialog-content class="mat-typography">
+    <mat-form-field appearance="outline">
+      <mat-label>Department Name</mat-label>
+      <input formControlName="name" matInput type="text">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Number of Department</mat-label>
+      <input formControlName="numberOf" matInput type="text">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Company</mat-label>
+      <mat-select formControlName="companyId" multiple>
+        <mat-option *ngFor="let company of companies" [value]="company.companyId">{{company.nameCompany}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Employee</mat-label>
+      <mat-select formControlName="employeeId" multiple>
+        <mat-option *ngFor="let employee of employees" [value]="employee.employeeId">{{employee.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button [mat-dialog-close]="true">Cancel</button>
+    <button mat-button type="submit">Update</button>
+  </mat-dialog-actions>
+</form>

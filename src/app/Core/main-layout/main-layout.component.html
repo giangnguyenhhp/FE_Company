@@ -1,0 +1,61 @@
+<mat-sidenav-container class="min-h-full">
+  <mat-sidenav #sidenav mode="side">
+    <div>
+      <ng-material-multilevel-menu
+        [configuration]='config'
+        [items]='AppItems'
+        (selectedItem)="selectedItem($event)">
+      </ng-material-multilevel-menu>
+    </div>
+
+  </mat-sidenav>
+  <mat-sidenav-content class="h-full">
+    <mat-toolbar color="primary">
+      <div>
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+      <div>
+        <a routerLink="/">Home</a>
+      </div>
+      <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+        <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+          <li>
+            <a routerLink="/register">Register</a>
+          </li>
+          <li>
+            <a routerLink="/login">Login</a>
+          </li>
+          <li>
+            <button (click)="logOut()" >Logout</button>
+          </li>
+        </ul>
+      </div>
+    </mat-toolbar>
+    <div class="content-base">
+      <mat-card class="min-h-fit m-4 text-base text-blue-900">
+        <router-outlet></router-outlet>
+      </mat-card>
+    </div>
+    <!--    <section fxLayout="column" fxFlexAlign="stretch">-->
+    <!--      <div fxFlexAlign="center">-->
+    <!--        <p>Welcome to the Material Angular Application</p>-->
+    <!--      </div>-->
+    <!--      <p>In this applications we are going to work with :</p>-->
+
+    <!--      <mat-tab-group (selectedTabChange)="executeSelectedChange($event)" class="text-black">-->
+    <!--        <mat-tab label="Material Components" labelClass="text-black">-->
+    <!--          <p>We are going to use different material components to create nice looking angular app</p>-->
+    <!--        </mat-tab>-->
+    <!--        <mat-tab label="Consume .NET CORE Web API" labelClass="text-black">-->
+    <!--          <p>We will consume our .NET Core application. Basically, we will create complete CRUD client app.</p>-->
+    <!--        </mat-tab>-->
+    <!--        <mat-tab label="Fully responsive navigation menu" labelClass="text-black">-->
+    <!--          <p>By using material components, we are going to create fully responsive navigation menu, with its side-bar as-->
+    <!--            well.</p>-->
+    <!--        </mat-tab>-->
+    <!--      </mat-tab-group>-->
+    <!--    </section>-->
+  </mat-sidenav-content>
+</mat-sidenav-container>
