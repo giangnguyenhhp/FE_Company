@@ -7,10 +7,10 @@ import {AuthResponse} from "../models/AuthResponse";
 @Injectable({
   providedIn: 'root'
 })
-export class LoginServiceService {
+export class LoginService {
 
   constructor(
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
   ) { }
 
   loginUser(request : LoginRequest) {

@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {MatTabChangeEvent} from "@angular/material/tabs";
-import {MultilevelNodes} from "ng-material-multilevel-menu";
+import {MultilevelMenuService, MultilevelNodes} from "ng-material-multilevel-menu";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-main-layout',
@@ -10,7 +11,10 @@ import {MultilevelNodes} from "ng-material-multilevel-menu";
 export class MainLayoutComponent implements OnInit {
 
 
-  constructor() { }
+  constructor(
+    private router : Router,
+    private multiLevelMenuService : MultilevelMenuService
+  ) { }
 
   ngOnInit(): void {
   }
@@ -44,12 +48,12 @@ export class MainLayoutComponent implements OnInit {
       items: [
         {
           label: 'Nhóm Quyền',
-          link: 'roles/layout-roles',
+          link: 'role/layout-role',
           // hidden: !this.hasPermission('Access.Admin')
         },
         {
           label: 'Tài khoản người dùng',
-          link: 'account/layout-account',
+          link: 'user/layout-user',
           // hidden: !this.hasPermission('Access.Admin')
         },
       ]
@@ -64,7 +68,7 @@ export class MainLayoutComponent implements OnInit {
     fontColor: `white`,
     // backgroundColor: `rgb(208, 241, 239)`,
     selectedListFontColor: `white`,
-    highlightOnSelect: true,
+    highlightOnSelect: false,
     collapseOnSelect: true,
     useDividers: false,
     rtlLayout: false,
@@ -76,6 +80,12 @@ export class MainLayoutComponent implements OnInit {
   }
 
   logOut() {
+    localStorage.removeItem("token");
+    localStorage.removeItem('permission');
+    this.router.navigate(['/login']).then(r => {});
+  }
 
+  setExpandCollapseStatus(type: any) {
+    this.multiLevelMenuService.setMenuExapandCollpaseStatus(type);
   }
 }

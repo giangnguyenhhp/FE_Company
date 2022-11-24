@@ -1,11 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {Employee} from "../models/Employee";
-import {EmployeeService} from "../service/employee.service";
+import {Employee} from "../../models/Employee";
+import {EmployeeService} from "../../service/employee.service";
 import {MatDialog} from "@angular/material/dialog";
-import {AddEmployeeComponent} from "../component/add-employee/add-employee.component";
-import {UpdateEmployeeComponent} from "../component/update-employee/update-employee.component";
-import {Company} from "../../company/Models/company";
-import { CompanyService } from 'src/app/company/Service/company.service';
+import {AddEmployeeComponent} from "../add-employee/add-employee.component";
+import {UpdateEmployeeComponent} from "../update-employee/update-employee.component";
+import {CompanyService} from 'src/app/company/Service/company.service';
+import {DepartmentService} from "../../../department/service/department.service";
+import {Company} from "../../../company/Models/company";
+import {Department} from "../../../department/models/Department";
 
 @Component({
   selector: 'app-layout-employee',

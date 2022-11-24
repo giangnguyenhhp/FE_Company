@@ -1,5 +1,7 @@
 <mat-sidenav-container class="min-h-full">
-  <mat-sidenav #sidenav mode="side">
+  <mat-sidenav #sidenav mode="side" class="bg-blue-500">
+    <div>
+    <div class="pl-8 mb-10 flex"></div>
     <div>
       <ng-material-multilevel-menu
         [configuration]='config'
@@ -7,7 +9,12 @@
         (selectedItem)="selectedItem($event)">
       </ng-material-multilevel-menu>
     </div>
-
+      <div class="m-4">
+        <button class="items-center" mat-raised-button (click)="setExpandCollapseStatus('expand')">Expand All</button>
+        &nbsp;
+        <button mat-raised-button (click)="setExpandCollapseStatus('collapse')">Collapse All</button>
+      </div>
+    </div>
   </mat-sidenav>
   <mat-sidenav-content class="h-full">
     <mat-toolbar color="primary">

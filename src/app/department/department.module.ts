@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { DepartmentRoutingModule } from './department-routing.module';
 import { AddDepartmentComponent } from './component/add-department/add-department.component';
 import { UpdateDepartmentComponent } from './component/update-department/update-department.component';
-import { LayoutDepartmentComponent } from './layout-department/layout-department.component';
+import { LayoutDepartmentComponent } from './component/layout-department/layout-department.component';
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {MatFormFieldModule} from "@angular/material/form-field";

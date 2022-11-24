@@ -1,11 +1,11 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {Company} from "../Models/company";
-import { CompanyService } from '../Service/company.service';
+import {Company} from "../../Models/company";
+import { CompanyService } from '../../Service/company.service';
 import {MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
-import {CreateCompanyComponent} from "../component/create-company/create-company.component";
-import {UpdateCompanyComponent} from "../component/update-company/update-company.component";
+import {CreateCompanyComponent} from "../create-company/create-company.component";
+import {UpdateCompanyComponent} from "../update-company/update-company.component";
 import {createMessageDiagnostic} from "@angular/compiler-cli/src/transformers/util";
-import {Department} from "../../department/models/Department";
+import {Department} from "../../../department/models/Department";
 import { DepartmentService } from 'src/app/department/service/department.service';
 
 @Component({

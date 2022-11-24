@@ -16,6 +16,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {MultilevelMenuService, NgMaterialMultilevelMenuModule} from "ng-material-multilevel-menu";
 import {MatDialogModule} from "@angular/material/dialog";
 import {LoginInterceptor} from "./Core/Interceptor/login.interceptor";
+import {RoleModule} from "./role/role.module";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import {LoginInterceptor} from "./Core/Interceptor/login.interceptor";
     MatMenuModule,
     MatCardModule,
     NgMaterialMultilevelMenuModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   providers: [
     {

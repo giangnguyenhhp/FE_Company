@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {LoginRequest} from "../models/LoginRequest";
-import {LoginServiceService} from "../Service/login-service.service";
-import {AuthResponse} from "../models/AuthResponse";
+import {LoginRequest} from "../../models/LoginRequest";
+import {LoginService} from "../../Service/login.service";
+import {AuthResponse} from "../../models/AuthResponse";
 import {Router} from "@angular/router";
 
 @Component({
@@ -17,7 +17,7 @@ export class LayoutLoginComponent implements OnInit {
   });
 
   constructor(
-    private loginService: LoginServiceService,
+    private loginService: LoginService,
     private router : Router
   ) {
   }
@@ -34,6 +34,8 @@ export class LayoutLoginComponent implements OnInit {
     this.loginService.loginUser(userLogin).subscribe({
       next: (res: AuthResponse) => {
         localStorage.setItem('token', res.token);
+        localStorage.setItem('permission',res.claims.join(','));
+
         this.router.navigate(['']).then(r => {})
       }
     })

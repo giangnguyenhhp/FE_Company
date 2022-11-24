@@ -1,10 +1,10 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {Department} from "../models/Department";
-import {DepartmentService} from "../service/department.service";
+import {Department} from "../../models/Department";
+import {DepartmentService} from "../../service/department.service";
 import {MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
-import {AddDepartmentRequest} from "../models/AddDepartmentRequest";
-import {AddDepartmentComponent} from "../component/add-department/add-department.component";
-import {UpdateDepartmentComponent} from "../component/update-department/update-department.component";
+import {AddDepartmentRequest} from "../../models/AddDepartmentRequest";
+import {AddDepartmentComponent} from "../add-department/add-department.component";
+import {UpdateDepartmentComponent} from "../update-department/update-department.component";
 
 @Component({
   selector: 'app-layout-department',

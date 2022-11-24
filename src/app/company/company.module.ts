@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CompanyRoutingModule } from './company-routing.module';
-import { LayoutCompanyComponent } from './layout-company/layout-company.component';
+import { LayoutCompanyComponent } from './component/layout-company/layout-company.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
