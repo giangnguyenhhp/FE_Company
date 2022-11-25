@@ -19,27 +19,36 @@ export class LayoutUserComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.userService.getUsers().subscribe(res=>{
-      if (res)
-        this.users = res;
-      console.log(this.users)
-    })
+    this.getAllUser()
   }
 
   UpdateUser(user: User) {
 
   }
 
-  deleteUser(user: User) {
-
+  deleteUser(id: string) {
+    let confirmResult = confirm("Are you sure you want to delete this user?")
+    this.userService.deleteUser(id).subscribe(r=>{
+      if(confirmResult){
+        this.getAllUser()
+      }
+    })
   }
 
   openCreateAccountForAdminDialog() {
     this.dialog.open(RegisterForAdminComponent).afterClosed().subscribe(res=>{
       if(res){
-        this.userService.getUsers()
+        this.getAllUser()
         console.log(this.users)
       }
+    })
+  }
+
+  private getAllUser() {
+    this.userService.getUsers().subscribe(res=>{
+      if (res)
+        this.users = res;
+      console.log(this.users)
     })
   }
 }

@@ -24,4 +24,8 @@ export class UserService {
   registerUserForAdmin(request: RegisterUserRequest) {
     return this.httpClient.post(`${environment.domain}/api/User/Register-for-admin`,request)
   }
+
+  deleteUser(id: string) {
+    return this.httpClient.delete<User>(`${environment.domain}/api/User/delete/${id}`)
+  }
 }

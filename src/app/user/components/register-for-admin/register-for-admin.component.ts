@@ -28,8 +28,9 @@ export class RegisterForAdminComponent implements OnInit {
   showError!: boolean;
   errorMessage: string='';
   roles: Role[] = [];
-  horizontalPosition: MatSnackBarHorizontalPosition = 'end';
-  verticalPosition: MatSnackBarVerticalPosition = 'top';
+
+  // horizontalPosition: MatSnackBarHorizontalPosition = 'end';
+  // verticalPosition: MatSnackBarVerticalPosition = 'top';
 
   constructor(
     private userService: UserService,
@@ -51,14 +52,11 @@ export class RegisterForAdminComponent implements OnInit {
     const request = <RegisterUserRequest>this.registerForm.value
     this.userService.registerUserForAdmin(request).subscribe({
       next: () => {
-        this.openSnackBar('Tạo tài khoản thành công')
         this.dialogRef.close(true)
       },
       error: (err: HttpErrorResponse) => {
         this.errorMessage = err.message;
-        this.showError=true;
-        this.openSnackBar('Tạo tài khoản thất bại')
-      }
+        this.showError=true;}
     })
   }
 
@@ -70,12 +68,12 @@ export class RegisterForAdminComponent implements OnInit {
     return this.registerForm.get(controlName)?.hasError(errorName)
   }
 
-  openSnackBar(message: string) {
-    this._snackBar.open(message, 'splash', {
-      horizontalPosition: this.horizontalPosition,
-      verticalPosition: this.verticalPosition,
-    });
-  }
+  // openSnackBar(message: string) {
+  //   this._snackBar.open(message, 'splash', {
+  //     horizontalPosition: this.horizontalPosition,
+  //     verticalPosition: this.verticalPosition,
+  //   });
+  // }
 
   private getAllRoles() {
     this.roleService.getAllRoles().subscribe(res => {

@@ -6,6 +6,7 @@ import {Router} from "@angular/router";
 import {
   PasswordConfirmationValidatorService
 } from "../../../Core/login/Service/password-confirmation-validator.service";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-register-user',
@@ -35,10 +36,13 @@ export class RegisterUserComponent implements OnInit {
 
   submit() {
     const request = <RegisterUserRequest>this.registerForm.value
-    this.userService.registerUser(request).subscribe(res => {
-      if (res) {
-        this.router.navigate(['/login']).then(() => {
-        })
+    this.userService.registerUser(request).subscribe( {
+      next: () => {
+        this.router.navigate(['/login']).then(m=>{});
+      },
+        error: (err: HttpErrorResponse) => {
+        this.errorMessage = err.message;
+        this.showError=true;
       }
     })
   }
