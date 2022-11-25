@@ -8,7 +8,7 @@
 <!--        {{errorMessage}}-->
 <!--      </div>-->
 
-      <form [formGroup]="loginForm" autocomplete="off" novalidate (ngSubmit)="loginUser(loginForm.value)">
+      <form [formGroup]="loginForm" autocomplete="off" novalidate (ngSubmit)="loginUser()">
         <div class="flex flex-col items-center  ">
           <mat-form-field  appearance="outline">
             <mat-label class="text-black">User Name</mat-label>
@@ -19,7 +19,7 @@
         <div class="flex flex-col items-center">
           <mat-form-field appearance="outline" class="pt-2.5">
             <mat-label class="text-black">Password</mat-label>
-            <input class="w-full border border-black" matInput type="password" formControlName="password">
+            <input class="w-full" matInput type="password" formControlName="password">
           </mat-form-field>
 <!--          <em *ngIf="validateControl('password')&&hasError('password','required')">Password is required</em>-->
         </div>

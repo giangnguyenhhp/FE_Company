@@ -6,6 +6,8 @@ import { LayoutLoginComponent } from './Components/layout/layout-login.component
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import {RouterModule} from "@angular/router";
+import {RegisterUserComponent} from "../../user/components/register-user/register-user.component";
 
 
 @NgModule({
@@ -17,7 +19,11 @@ import {MatInputModule} from "@angular/material/input";
     LoginRoutingModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    RouterModule.forChild([
+      {path:'register',component:RegisterUserComponent},
+      {path:'',component:LayoutLoginComponent}
+    ])
   ]
 })
 export class LoginModule { }

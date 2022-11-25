@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {MainLayoutComponent} from "./Core/main-layout/main-layout.component";
 import {LoginGuard} from "./Core/Guard/login.guard";
+import {RegisterUserComponent} from "./user/components/register-user/register-user.component";
 
 const routes: Routes = [
   {
@@ -39,6 +40,9 @@ const routes: Routes = [
   {
     path : 'login',
     loadChildren : () => import('./Core/login/login.module').then(m=>m.LoginModule)
+  },
+  {
+    path :'register',component:RegisterUserComponent
   }
 
 

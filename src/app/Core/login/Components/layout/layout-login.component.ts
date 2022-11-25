@@ -25,12 +25,8 @@ export class LayoutLoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  loginUser = (loginFormValue: any) => {
-    const login = {...loginFormValue};
-    const userLogin: LoginRequest = {
-      username: login.username,
-      password: login.password
-    }
+  loginUser() {
+    const userLogin = <LoginRequest>this.loginForm.value
     this.loginService.loginUser(userLogin).subscribe({
       next: (res: AuthResponse) => {
         localStorage.setItem('token', res.token);
