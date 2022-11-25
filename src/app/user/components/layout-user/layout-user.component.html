@@ -1,0 +1,33 @@
+<div>
+  <div>
+    <button mat-icon-button (click)="openCreateAccountForAdminDialog()">
+      <mat-icon>add</mat-icon>Create User Account
+    </button>
+  </div>
+<table >
+<tr>
+  <th>Stt</th>
+  <th>User Name</th>
+  <th>User Email</th>
+  <th>User Id</th>
+  <th>Update User</th>
+  <th>Delete User</th>
+</tr>
+  <tr *ngFor="let user of users;index as i">
+    <td>{{i+1}}</td>
+    <td>{{user.userName}}</td>
+    <td>{{user.email}}</td>
+    <td>{{user.id}}</td>
+    <td>
+      <button mat-icon-button color="primary" (click)="UpdateUser(user)">
+        <mat-icon>settings</mat-icon>Edit
+      </button>
+    </td>
+    <td>
+      <button mat-icon-button color="accent" (click)="deleteUser(user)">
+        <mat-icon>delete</mat-icon>Delete
+      </button>
+  </td>
+  </tr>
+</table>
+</div>

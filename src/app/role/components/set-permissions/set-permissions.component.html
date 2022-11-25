@@ -1,0 +1,14 @@
+<div class="w-96">
+  <h2 mat-dialog-title class="text-center">Map Permissions</h2>
+  <mat-dialog-content class="flex flex-col">
+    <div class="flex m-2" *ngFor="let permission of permissions">
+      <mat-checkbox class="pr-2" (change)="checkPermission(permission,$event)" [checked]="isCheck(permission)">{{permission}}</mat-checkbox>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-raised-button [mat-dialog-close]="true">
+      Close
+    </button>
+    <button mat-raised-button (click)="submit()">Save</button>
+  </mat-dialog-actions>
+</div>
