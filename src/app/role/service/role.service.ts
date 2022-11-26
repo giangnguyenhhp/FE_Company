@@ -36,6 +36,7 @@ export class RoleService {
   }
 
   mapPermission(request: SetPermissionsRequest) {
-    return  this.httpClient.post(`${environment.domain}/api/Role/map-role-claim/${request.id}`,request);
+    return  this.httpClient.post(`${environment.domain}/api/Role/map-permissions/`,request);
   }
+
 }

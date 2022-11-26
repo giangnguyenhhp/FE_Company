@@ -15,6 +15,7 @@ import { UpdateCompanyComponent } from './component/update-company/update-compan
 import {MatSelectModule} from "@angular/material/select";
 import {MatListModule} from "@angular/material/list";
 import {MatExpansionModule} from "@angular/material/expansion";
+import {NgxPermissionsRestrictStubModule} from "ngx-permissions";
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
     MatSelectModule,
     MatListModule,
     MatExpansionModule,
+    NgxPermissionsRestrictStubModule,
   ]
 })
 export class CompanyModule { }

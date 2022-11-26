@@ -1,4 +1,4 @@
 export interface SetPermissionsRequest{
-  roleClaims: string[]
-  id : string
+  permissions: string[]
+  roleId : string
 }

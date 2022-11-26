@@ -2,6 +2,7 @@
 <form [formGroup]="UpdateCompanyFormGroup" (submit)="submit()">
 
   <mat-dialog-content class="mat-typography">
+    <div class="flex flex-col">
     <mat-form-field appearance="outline">
       <mat-label>Company Name</mat-label>
       <input formControlName="nameCompany" matInput type="text">
@@ -30,7 +31,7 @@
         <mat-option *ngFor="let employee of employees" [value]="employee.employeeId">{{employee.name}}</mat-option>
       </mat-select>
     </mat-form-field>
-
+    </div>
   </mat-dialog-content>
 
   <mat-dialog-actions align="end">

@@ -1,5 +1,5 @@
 <div>
-  <div>
+  <div [ngxPermissionsOnly]="['AdminAccess']">
     <button mat-icon-button (click)="openCreateAccountForAdminDialog()">
       <mat-icon>add</mat-icon>Create User Account
     </button>
@@ -9,6 +9,7 @@
   <th>Stt</th>
   <th>User Name</th>
   <th>User Email</th>
+  <th>User PhoneNumber</th>
   <th>User Id</th>
   <th>Update User</th>
   <th>Delete User</th>
@@ -17,6 +18,7 @@
     <td>{{i+1}}</td>
     <td>{{user.userName}}</td>
     <td>{{user.email}}</td>
+    <td>{{user.phoneNumber}}</td>
     <td>{{user.id}}</td>
     <td>
       <button mat-icon-button color="primary" (click)="UpdateUser(user)">

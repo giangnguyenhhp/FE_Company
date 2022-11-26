@@ -14,13 +14,17 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatSelectModule} from "@angular/material/select";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { UpdateUserComponent } from './components/update-user/update-user.component';
+import {MatInputModule} from "@angular/material/input";
+import {NgxPermissionsRestrictStubModule} from "ngx-permissions";
 
 
 @NgModule({
   declarations: [
     LayoutUserComponent,
     RegisterUserComponent,
-    RegisterForAdminComponent
+    RegisterForAdminComponent,
+    UpdateUserComponent
   ],
     imports: [
         CommonModule,
@@ -33,7 +37,9 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
         MatButtonToggleModule,
         MatDialogModule,
         MatSelectModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        MatInputModule,
+        NgxPermissionsRestrictStubModule
     ]
 })
 export class UserModule { }

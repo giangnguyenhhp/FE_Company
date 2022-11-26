@@ -8,7 +8,7 @@ import {AuthResponse} from "../models/AuthResponse";
   providedIn: 'root'
 })
 export class LoginService {
-
+  public permissions : string[]=[]
   constructor(
     private httpClient: HttpClient,
   ) { }

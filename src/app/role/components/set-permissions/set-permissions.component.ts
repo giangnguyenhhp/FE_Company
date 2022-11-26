@@ -27,8 +27,8 @@ export class SetPermissionsComponent implements OnInit {
 
   submit() {
     const request: SetPermissionsRequest = <SetPermissionsRequest>{
-      roleClaims: this.checkedPermissions,
-      id: this.data?.role?.id,
+      permissions: this.checkedPermissions,
+      roleId: this.data?.role?.id,
     }
     this.roleService.mapPermission(request).subscribe(r => {
       if (r) {
@@ -66,7 +66,7 @@ export class SetPermissionsComponent implements OnInit {
 
   //Method hiển thị những permission đã được map với role trong mat-check-box
   private setCheckedPermissions() {
-    this.checkedPermissions = this.data?.role?.roleClaims ? this.data?.role?.roleClaims.map((p: any) => p.value) : [];
+    this.checkedPermissions = this.data.role.roleClaims ? this.data.role.roleClaims.map((p: any) => p.value) : [];
     console.log(this.checkedPermissions)
   }
 }

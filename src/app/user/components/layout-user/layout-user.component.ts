@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../service/user.service';
 import {User} from "../../model/User";
-import {MatDialog} from "@angular/material/dialog";
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {RegisterForAdminComponent} from "../register-for-admin/register-for-admin.component";
+import {UpdateUserComponent} from "../update-user/update-user.component";
 
 @Component({
   selector: 'app-layout-user',
@@ -15,7 +16,7 @@ export class LayoutUserComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private dialog : MatDialog
+    private dialog : MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -23,7 +24,12 @@ export class LayoutUserComponent implements OnInit {
   }
 
   UpdateUser(user: User) {
-
+    this.dialog.open(UpdateUserComponent,{data:user}).afterClosed().subscribe(res=>{
+      if (res){
+        this.getAllUser()
+        console.log(this.users)
+      }
+    })
   }
 
   deleteUser(id: string) {

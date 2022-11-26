@@ -5,4 +5,5 @@ export interface User{
   "email": string
   "normalizedEmail": string
   "concurrencyStamp": string
+  phoneNumber: string
 }

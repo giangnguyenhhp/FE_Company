@@ -17,11 +17,14 @@ import {MultilevelMenuService, NgMaterialMultilevelMenuModule} from "ng-material
 import {MatDialogModule} from "@angular/material/dialog";
 import {LoginInterceptor} from "./Core/Interceptor/login.interceptor";
 import {RoleModule} from "./role/role.module";
+import {NgxPermissionsModule} from "ngx-permissions";
+import { UnauthorizedComponent } from './Core/unauthorized/unauthorized.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainLayoutComponent,
+    UnauthorizedComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +41,7 @@ import {RoleModule} from "./role/role.module";
     MatCardModule,
     NgMaterialMultilevelMenuModule,
     MatDialogModule,
+    NgxPermissionsModule.forRoot()
   ],
   providers: [
     {
