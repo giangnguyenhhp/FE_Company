@@ -13,6 +13,7 @@
       <th>Company Description</th>
       <th>Company Id</th>
       <th>Department Of Company</th>
+      <th>Employee Of Company</th>
       <th>Update Company</th>
       <th>Delete Company</th>
     </tr>
@@ -23,6 +24,10 @@
       <td>{{company.description}}</td>
       <td>{{company.companyId}}</td>
       <td>
+        <button mat-button (click)="openDialogViewDepartment(company)">Details</button>
+      </td>
+      <td>
+        <button mat-button (click)="openDialogViewEmployee(company)">Details</button>
       </td>
       <td>
         <button mat-icon-button (click)="OpenUpdateCompanyDialog(company)">

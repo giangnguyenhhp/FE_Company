@@ -18,11 +18,14 @@ export class UpdateDepartmentComponent implements OnInit {
     name: new FormControl,
     numberOf: new FormControl,
     departmentId: new FormControl,
-    companyId: new FormControl,
-    employeeId: new FormControl,
+    companyName: new FormControl,
+    employeeName: new FormControl,
   });
   companies : Company[] = [];
   employees: Employee[] = [];
+
+  employeeOfDepartment : string[] = []
+  companyOfDepartment : string[] = []
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data : any,
@@ -36,7 +39,8 @@ export class UpdateDepartmentComponent implements OnInit {
     this.initFormData();
     this.getCompanies();
     this.getEmployees();
-
+    this.getEmployeeOfDepartment();
+    this.getCompanyOfDepartment();
   }
 
   private initFormData() {
@@ -65,6 +69,20 @@ export class UpdateDepartmentComponent implements OnInit {
       if (res){
         this.employees = res;
       }
+    })
+  }
+
+  private getEmployeeOfDepartment() {
+    this.departmentService.getEmployeeOfDepartment(this.data.departmentId).subscribe((res: any)=>{
+      this.employeeOfDepartment = res
+      this.updateDepartmentFormGroup.controls.employeeName.setValue(this.employeeOfDepartment)
+    })
+  }
+
+  private getCompanyOfDepartment() {
+    this.departmentService.getCompanyOfDepartment(this.data.departmentId).subscribe((res:any)=>{
+      this.companyOfDepartment = res
+      this.updateDepartmentFormGroup.controls.companyName.setValue(this.companyOfDepartment)
     })
   }
 }

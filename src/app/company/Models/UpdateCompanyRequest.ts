@@ -3,6 +3,6 @@ export interface UpdateCompanyRequest {
   nameCompany: string,
   address: string,
   description: string,
-  employeeId: [number],
-  departmentId: [number]
+  employeeName: string[],
+  departmentName: [string]
 }

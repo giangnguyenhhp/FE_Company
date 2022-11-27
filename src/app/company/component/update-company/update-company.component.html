@@ -20,15 +20,15 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Department</mat-label>
-      <mat-select formControlName="departmentId" multiple>
-        <mat-option *ngFor="let department of departments" [value]="department.departmentId">{{department.name}}</mat-option>
+      <mat-select formControlName="departmentName" multiple>
+        <mat-option *ngFor="let department of departments" [value]="department.name">{{department.name}}</mat-option>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Employee</mat-label>
-      <mat-select formControlName="employeeId" multiple>
-        <mat-option *ngFor="let employee of employees" [value]="employee.employeeId">{{employee.name}}</mat-option>
+      <mat-select formControlName="employeeName" multiple>
+        <mat-option *ngFor="let employee of employees" [value]="employee.name">{{employee.name}}</mat-option>
       </mat-select>
     </mat-form-field>
     </div>

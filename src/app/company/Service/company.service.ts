@@ -31,4 +31,14 @@ export class CompanyService {
   deleteCompany(companyId: number) {
     return this.httpClient.delete<Company[]>(`${environment.domain}/api/Company/delete/${companyId}`);
   }
+
+  getDepartmentByCompanyId(id : number) {
+    return this.httpClient.get(`${environment.domain}/api/Company/get-department-by-company/${id}`);
+
+  }
+
+  getEmployeeByCompanyId(id:number) {
+    return this.httpClient.get(`${environment.domain}/api/Company/get-employee-by-company/${id}`);
+
+  }
 }

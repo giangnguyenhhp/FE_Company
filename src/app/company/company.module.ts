@@ -16,6 +16,8 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatListModule} from "@angular/material/list";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {NgxPermissionsRestrictStubModule} from "ngx-permissions";
+import { ViewDepartmentComponent } from './component/view-department/view-department.component';
+import { ViewEmployeeComponent } from './component/view-employee/view-employee.component';
 
 
 @NgModule({
@@ -23,6 +25,8 @@ import {NgxPermissionsRestrictStubModule} from "ngx-permissions";
     LayoutCompanyComponent,
     CreateCompanyComponent,
     UpdateCompanyComponent,
+    ViewDepartmentComponent,
+    ViewEmployeeComponent,
   ],
   imports: [
     CommonModule,

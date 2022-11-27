@@ -1,12 +1,11 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {Company} from "../../Models/company";
 import { CompanyService } from '../../Service/company.service';
-import {MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
+import {MatDialog} from "@angular/material/dialog";
 import {CreateCompanyComponent} from "../create-company/create-company.component";
 import {UpdateCompanyComponent} from "../update-company/update-company.component";
-import {createMessageDiagnostic} from "@angular/compiler-cli/src/transformers/util";
-import {Department} from "../../../department/models/Department";
-import { DepartmentService } from 'src/app/department/service/department.service';
+import {ViewDepartmentComponent} from "../view-department/view-department.component";
+import {ViewEmployeeComponent} from "../view-employee/view-employee.component";
 
 @Component({
   selector: 'app-layout-company',
@@ -16,12 +15,10 @@ import { DepartmentService } from 'src/app/department/service/department.service
 export class LayoutCompanyComponent implements OnInit {
 
   companies: Company[] = [];
-  departments : Department[] = [];
 
   constructor(
     private companyService: CompanyService,
     private dialog : MatDialog,
-    private departmentService: DepartmentService
 
   ) { }
 
@@ -65,4 +62,19 @@ export class LayoutCompanyComponent implements OnInit {
     })
   }
 
+  openDialogViewDepartment(company:Company) {
+    this.dialog.open(ViewDepartmentComponent,{data:company}).afterClosed().subscribe(res=>{
+      if(res){
+        this.getAllCompanies();
+      }
+    })
+  }
+
+  openDialogViewEmployee(company: Company) {
+    this.dialog.open(ViewEmployeeComponent,{data:company}).afterClosed().subscribe(res=>{
+      if(res){
+        this.getAllCompanies();
+      }
+    })
+  }
 }

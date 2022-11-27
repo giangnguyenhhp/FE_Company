@@ -14,34 +14,42 @@ import {DepartmentService} from "../../../department/service/department.service"
   styleUrls: ['./update-company.component.scss']
 })
 export class UpdateCompanyComponent implements OnInit {
+
   departments: Department[] = [];
   employees: Employee[] = [];
-  UpdateCompanyFormGroup= new FormGroup({
+
+  departmentOfCompany: number[] = []
+  employeeOfCompany: number[] = []
+
+  UpdateCompanyFormGroup = new FormGroup({
     nameCompany: new FormControl,
     address: new FormControl,
     description: new FormControl,
-    employeeId: new FormControl,
-    departmentId: new FormControl,
-    companyId: new FormControl
+    employeeName: new FormControl,
+    departmentName: new FormControl,
+    companyId: new FormControl,
   })
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private companyService: CompanyService,
     private dialogRef: MatDialogRef<UpdateCompanyRequest>,
-    private employeeService : EmployeeService,
+    private employeeService: EmployeeService,
     private departmentService: DepartmentService
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.initFormData();
     this.getDepartments();
     this.getEmployees();
+    this.getDepartmentByCompanyId()
+    this.getEmployeeByCompanyId()
 
   }
 
   submit() {
-    const request = <UpdateCompanyRequest> this.UpdateCompanyFormGroup.value;
+    const request = <UpdateCompanyRequest>this.UpdateCompanyFormGroup.value;
     this.companyService.UpdateCompany(request).subscribe(res => {
       this.dialogRef.close(true);
     })
@@ -61,9 +69,27 @@ export class UpdateCompanyComponent implements OnInit {
 
   private getDepartments() {
     this.departmentService.getDepartments().subscribe(res => {
-      if (res){
+      if (res) {
         this.departments = res;
       }
+    })
+  }
+
+  private getDepartmentByCompanyId() {
+    this.companyService.getDepartmentByCompanyId(this.data.companyId).subscribe((res: any) => {
+      this.departmentOfCompany = res;
+      this.UpdateCompanyFormGroup.controls.departmentName.setValue(this.departmentOfCompany)
+      console.log(res)
+
+    })
+  }
+
+  private getEmployeeByCompanyId() {
+    this.companyService.getEmployeeByCompanyId(this.data.companyId).subscribe((res: any) => {
+      this.employeeOfCompany = res
+      this.UpdateCompanyFormGroup.controls.employeeName.setValue(this.employeeOfCompany)
+      console.log(res)
+
     })
   }
 }

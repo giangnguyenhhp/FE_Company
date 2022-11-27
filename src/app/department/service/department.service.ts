@@ -32,4 +32,11 @@ export class DepartmentService {
 
   }
 
+  getEmployeeOfDepartment(departmentId:number) {
+    return this.httpClient.get(`${environment.domain}/api/Department/get-employee-by-department/${departmentId}`)
+  }
+
+  getCompanyOfDepartment(departmentId:number) {
+    return this.httpClient.get(`${environment.domain}/api/Department/get-company-by-department/${departmentId}`)
+  }
 }

@@ -53,12 +53,12 @@ export class MainLayoutComponent implements OnInit {
         {
           label: 'Nhóm Quyền',
           link: 'role/layout-role',
-          hidden: !this.hasPermission('AccessAdmin')
+          hidden: !this.hasPermission('AdminAccess')
         },
         {
           label: 'Tài khoản người dùng',
           link: 'user/layout-user',
-          hidden: !this.hasPermission('AccessAdmin')
+          hidden: !this.hasPermission('AdminAccess')
         },
       ]
     }

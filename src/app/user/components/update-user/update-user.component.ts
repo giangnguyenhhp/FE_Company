@@ -5,6 +5,7 @@ import {Role} from "../../../role/models/role";
 import {RoleService} from 'src/app/role/service/role.service';
 import {UserService} from '../../service/user.service';
 import {UpdateUserRequest} from "../../model/UpdateUserRequest";
+import {User} from "../../model/User";
 
 @Component({
   selector: 'app-update-user',
@@ -25,7 +26,7 @@ export class UpdateUserComponent implements OnInit {
 
   constructor(
     private dialogRef: MatDialogRef<UpdateUserComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: UpdateUserRequest,
     private roleService: RoleService,
     private userService: UserService
   ) {

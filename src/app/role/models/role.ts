@@ -3,5 +3,5 @@ export interface Role {
   "name": string,
   "normalizedName": string,
   "concurrencyStamp": string,
-  roleClaims: null,
+  roleClaims: string[],
 }

@@ -13,12 +13,15 @@ export class AppComponent {
 
   constructor(
     private permissionService: NgxPermissionsService,
+    private loginService: LoginService
   ) { }
 
   ngOnInit() {
     const permissions = localStorage.getItem('permission')?.split(',');
-    if(permissions)
-    this.permissionService.loadPermissions(permissions)
-    console.log(permissions)
+    if(permissions) {
+      this.permissionService.loadPermissions(permissions)
+      this.loginService.permissions = permissions;
+      console.log(permissions)
+    }
   }
 }

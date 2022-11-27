@@ -21,14 +21,38 @@ export class SetPermissionsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getPermissions();
+    this.getAllPermissions();
     this.setCheckedPermissions();
   }
 
+  private getAllPermissions() {
+    this.roleService.getAllPermissions().subscribe(r => {
+      if (r) {
+        this.permissions = r;
+        console.log(this.permissions);
+      } else {
+        this.permissions = [];
+      }
+    })
+  }
+
+  checkPermission(permission: string, $event: MatCheckboxChange) {
+    if ($event.checked) {
+      this.checkedPermissions.push(permission);
+    } else {
+      this.checkedPermissions = this.checkedPermissions.filter(p => p !== permission);
+    }
+    console.log(this.checkedPermissions);
+  }
+
+  isCheck(permission: string) {
+    return this.checkedPermissions.includes(permission)
+  }
+
   submit() {
-    const request: SetPermissionsRequest = <SetPermissionsRequest>{
+    const request = <SetPermissionsRequest>{
       permissions: this.checkedPermissions,
-      roleId: this.data?.role?.id,
+      roleId: this.data.role.id,
     }
     this.roleService.mapPermission(request).subscribe(r => {
       if (r) {
@@ -37,36 +61,10 @@ export class SetPermissionsComponent implements OnInit {
     })
   }
 
-  private getPermissions() {
-    this.roleService.getAllPermissions().subscribe(res => {
-      if (res) {
-        this.permissions = res;
-      } else {
-        this.permissions = [];
-      }
-    })
-  }
-
-
-  //Event check-box-change, nếu check vào mat-box thì sẽ đẩy permission đó vào mảng checkedPermission
-  checkPermission(permission: string, $event: MatCheckboxChange) {
-    if ($event.checked) {
-      this.checkedPermissions.push(permission)
-    } else {
-      //nếu không được check thì sẽ loại bỏ permission đó ra khỏi mảng checkedPermission
-      this.checkedPermissions = this.checkedPermissions.filter(x => x != permission)
-    }
-    console.log(this.checkedPermissions)
-  }
-
-  //Kiểm tra xem nếu permissions được check thì sẽ thêm vào checkedPermissions
-  isCheck(permission: string) {
-    return this.checkedPermissions.includes(permission);
-  }
-
-  //Method hiển thị những permission đã được map với role trong mat-check-box
   private setCheckedPermissions() {
-    this.checkedPermissions = this.data.role.roleClaims ? this.data.role.roleClaims.map((p: any) => p.value) : [];
+    if (this.data.role.roleClaims) {
+      this.checkedPermissions = this.data.role.roleClaims.map((p: any) => p.value)
+    }
     console.log(this.checkedPermissions)
   }
 }

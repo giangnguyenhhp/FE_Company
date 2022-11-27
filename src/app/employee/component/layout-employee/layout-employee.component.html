@@ -22,8 +22,8 @@
       <td>{{Employee.name}}</td>
       <td>{{Employee.address}}</td>
       <td>{{Employee.birth}}</td>
-      <td>{{Employee.department.name}}</td>
-      <td>{{Employee.company.nameCompany}}</td>
+      <td>{{Employee.department?.name}}</td>
+      <td>{{Employee.company?.nameCompany}}</td>
       <td>{{Employee.employeeId}}</td>
       <td>
         <button mat-icon-button (click)="OpenUpdateEmployeeDialog(Employee)">
